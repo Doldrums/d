@@ -1,0 +1,35 @@
+name: d
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.5
+  ping_discover_network: ^0.2.0+1
+  device_info_plus: ^8.0.0
+  wifi: ^0.1.5
+  wifi_iot: ^0.3.18
+  riverpod: ^1.0.3
+  freezed: ^2.2.1
+  hooks_riverpod: ^1.0.3
+  flutter_secure_storage: ^6.0.0
+  rxdart: ^0.27.7
+  logger: ^1.1.0
+  permission_handler: ^10.2.0
+  modal_bottom_sheet: ^2.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
