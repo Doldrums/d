@@ -1,7 +1,7 @@
 name: d
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -26,6 +26,7 @@ dependencies:
   permission_handler: ^10.2.0
   modal_bottom_sheet: ^2.1.2
   flutter_neumorphic: ^3.2.0
+  emojis: ^0.9.9
 
 dev_dependencies:
   flutter_test:
