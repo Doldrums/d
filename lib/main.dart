@@ -28,19 +28,6 @@ class MyApp extends StatelessWidget {
           '/host': (context) => const HostPage(),
         },
         initialRoute: '/',
-        // home: NeumorphicTheme(
-        //   theme: const NeumorphicThemeData(
-        //     defaultTextColor: Color(0xFF303E57),
-        //     accentColor: Color(0xFFfc7b03),
-        //     variantColor: Colors.black38,
-        //     baseColor: Color(0xFFF8F9FC),
-        //     depth: 8,
-        //     intensity: 0.5,
-        //     lightSource: LightSource.topLeft,
-        //   ),
-        //   themeMode: ThemeMode.light,
-        //   child: const HomePage(),
-        // ),
       ),
     );
   }

@@ -14,34 +14,26 @@ class ClientModel {
   Uint8ListCallBack onData;
   DynamicCallBack onError;
 
-  ClientModel(
-  {
+  ClientModel({
     required this.hostname,
     required this.port,
     required this.onData,
     required this.onError,
-
-});
+  });
   bool isConnected = false;
   Socket? socket;
-
 
   Future<void> connect() async {
     socket = await Socket.connect(hostname, port);
     socket?.listen(onData, onError: onError, onDone: () async {
       final info = await deviceInfo.deviceInfo;
-
+      disconnect(info);
+      isConnected = false;
     });
+    isConnected = true;
   }
 
-  void write(String message) {
+  void write(String message) => socket?.write(message);
 
-  }
-
-  void disconnect(DeviceInfoPlugin deviceInfo) {
-
-  }
-
-
+  void disconnect(BaseDeviceInfo deviceInfo) => socket?.destroy();
 }
-
