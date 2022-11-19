@@ -1,7 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../host_providers.dart';
+import '../../../provider/host/host_providers.dart';
 
 class HostAppBar extends HookConsumerWidget {
   const HostAppBar({Key? key}) : super(key: key);

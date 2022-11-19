@@ -1,12 +1,12 @@
-import 'package:d/host/widgets/details_card.dart';
-import 'package:d/host/widgets/logs_card.dart';
-import 'package:d/host/widgets/host_bar.dart';
-import 'package:d/host/widgets/host_switch.dart';
-import 'package:d/host/widgets/qr_card.dart';
+import 'package:d/ui/host/widgets/details_card.dart';
+import 'package:d/ui/host/widgets/logs_card.dart';
+import 'package:d/ui/host/widgets/host_bar.dart';
+import 'package:d/ui/host/widgets/host_switch.dart';
+import 'package:d/ui/host/widgets/qr_card.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../host_providers.dart';
+import '../../provider/host/host_providers.dart';
 
 class HostPage extends ConsumerWidget {
   const HostPage({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../host_providers.dart';
+import '../../../provider/host/host_providers.dart';
 import 'neumorphic_card_base.dart';
 
 class ConnectionDetailsCard extends ConsumerWidget {
@@ -31,7 +31,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.address?.address ?? 'none',
+                    host?.address.address ?? 'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),

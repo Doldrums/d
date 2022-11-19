@@ -2,7 +2,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../../host_providers.dart';
+import '../../../provider/host/host_providers.dart';
 import 'neumorphic_card_base.dart';
 
 class QRCard extends ConsumerWidget {
@@ -23,8 +23,7 @@ class QRCard extends ConsumerWidget {
                     child: CircularProgressIndicator(),
                   ),
                 ),
-          Text(qrData != null
-              ? 'Scan to Connect' : 'Setup host'),
+          Text(qrData != null ? 'Scan to Connect' : 'Setup host'),
         ],
       ),
     );

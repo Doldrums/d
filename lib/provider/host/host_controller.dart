@@ -13,7 +13,7 @@ class HostController extends ChangeNotifier {
   }
 
   Future<void> updateHostState() async {
-    if(!host!.running) {
+    if (!host!.running) {
       await host!.start();
     } else {
       await host!.stop();
@@ -21,13 +21,13 @@ class HostController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void onData(Uint8List data){
+  void onData(Uint8List data) {
     final text = String.fromCharCodes(data);
     serverLogs.add(text);
     notifyListeners();
   }
-  void onError(dynamic error){
+
+  void onError(dynamic error) {
     debugPrint('Some error occurred $error');
   }
-
 }

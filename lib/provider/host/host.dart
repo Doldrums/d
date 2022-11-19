@@ -55,7 +55,6 @@ class Host {
     qrData = null;
     password = null;
     ssid = null;
-
   }
 
   void onRequest(HttpRequest request) {

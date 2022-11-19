@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'host/host.dart';
-import 'host/host_controller.dart';
+import 'host.dart';
+import 'host_controller.dart';
 
 final hostControllerProvider = ChangeNotifierProvider<HostController>((ref) {
   final host = HostController();

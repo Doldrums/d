@@ -2,7 +2,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'client_controller.dart';
+import '../../provider/client/client_controller.dart';
 import 'widgets/app_bar.dart';
 
 class ClientPage extends HookConsumerWidget {

@@ -1,4 +1,4 @@
-import 'package:d/client/client.dart';
+import 'package:d/provider/client/client.dart';
 import 'package:flutter/foundation.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:ping_discover_network/ping_discover_network.dart';
