@@ -1,56 +1,43 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'client_controller.dart';
-import 'widgets/app_bar.dart';
+typedef Uint8ListCallBack = Function(Uint8List data);
+typedef DynamicCallBack = Function(dynamic data);
 
-class ClientPage extends HookConsumerWidget {
-  const ClientPage({Key? key}) : super(key: key);
+DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ClientController();
-    return Material(
-      child: NeumorphicBackground(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 30),
-            const ClientAppBar(),
-            if (controller.client == null || !controller.client!.isConnected)
-              Column(children: [
-                InkWell(
-                    onTap: () async {
-                      final info = await DeviceInfoPlugin().deviceInfo;
-                      await controller.client!.connect();
-                      controller.sendMessage('connected to ${info.data}');
-                    },
-                    child: Row(children: [
-                      if (controller.address == null)
-                        const Text('No deviceInfo found')
-                      else
-                        Text('Server ${controller.address!.ip}')
-                    ])),
-                IconButton(
-                  onPressed: controller.getIpAddress(),
-                  icon: const Icon(Icons.search),
-                ),
-              ])
-            else
-              Text('Connected to ${controller.client!.hostname}'),
-            AnimatedBuilder(
-                animation: controller,
-                builder: (context, child) {
-                  return Text(
-                    '${controller.client}',
-                    style: Theme.of(context).textTheme.headline4,
-                  );
-                }),
-            const Spacer(),
-          ],
-        ),
-      ),
-    );
+class ClientModel {
+  String hostname;
+  int port;
+  Uint8ListCallBack onData;
+  DynamicCallBack onError;
+
+  ClientModel({
+    required this.hostname,
+    required this.port,
+    required this.onData,
+    required this.onError,
+  });
+  bool isConnected = false;
+  Socket? socket;
+
+  Future<void> connect() async {
+    try {
+      socket = await Socket.connect(hostname, port);
+      socket?.listen(onData, onError: onError, onDone: () async {
+        final info = await deviceInfo.deviceInfo;
+        disconnect(info);
+        isConnected = false;
+      });
+      isConnected = true;
+    } catch (e) {
+      print('Some error occurred... $e');
+    }
   }
+
+  void write(String message) => socket?.write(message);
+
+  void disconnect(BaseDeviceInfo deviceInfo) => socket?.destroy();
 }

@@ -39,7 +39,7 @@ SPEC CHECKSUMS:
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   wifi: d7d77c94109e36c4175d845f0a5964eadba71060
-  wifi_iot: b5aafd6f9b52f8a357383a1deabab45f31cd602d
+  wifi_iot: 19a107c401250c91f3bb3576517e19e31b131677
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 

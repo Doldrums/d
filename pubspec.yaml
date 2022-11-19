@@ -15,7 +15,6 @@ dependencies:
   cupertino_icons: ^1.0.5
   ping_discover_network: ^0.2.0+1
   device_info_plus: ^8.0.0
-  wifi: ^0.1.5
   wifi_iot: ^0.3.18
   riverpod: ^1.0.3
   freezed: ^2.2.1
@@ -27,6 +26,8 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   flutter_neumorphic: ^3.2.0
   emojis: ^0.9.9
+  qr_flutter: ^4.0.0
+  flutter_hooks: ^0.18.5+1
 
 dev_dependencies:
   flutter_test:

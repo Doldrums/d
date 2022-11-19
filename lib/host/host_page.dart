@@ -1,81 +1,57 @@
+import 'package:d/host/widgets/details_card.dart';
+import 'package:d/host/widgets/history_card.dart';
+import 'package:d/host/widgets/host_bar.dart';
+import 'package:d/host/widgets/host_switch.dart';
+import 'package:d/host/widgets/qr_card.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HostPage extends HookConsumerWidget {
+import 'host_controller.dart';
+
+class HostPage extends StatefulWidget {
   const HostPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<HostPage> createState() => _HostPageState();
+}
+
+class _HostPageState extends State<HostPage> {
+  late HostController _controller;
+
+  @override
+  void initState() {
+    _controller = HostController();
+    _controller.init();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return NeumorphicBackground(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Row(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 48.0),
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Neumorphic(
-                  style: NeumorphicStyle(
-                    depth: 80,
-                    intensity: 0.4,
-                    boxShape: NeumorphicBoxShape.roundRect(
-                      BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: NeumorphicButton(
-                      padding: const EdgeInsets.all(12.0),
-                      onPressed: () {},
-                      style: NeumorphicStyle(
-                        depth: -10,
-                        boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.connect_without_contact_sharp,
-                            color: Color(0xFFfc7b03),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              'Stable',
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
+                const SizedBox(height: 60),
+                const HostAppBar(),
                 const Spacer(),
-                Neumorphic(
-                  style: NeumorphicStyle(
-                    depth: 80,
-                    intensity: 0.4,
-                    boxShape: NeumorphicBoxShape.roundRect(
-                      BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: NeumorphicButton(
-                    padding: const EdgeInsets.all(12.0),
-                    onPressed: () {},
-                    style: NeumorphicStyle(
-                      depth: -10,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                        BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.settings,
-                      color: Color(0xFF303E57),
-                    ),
-                  ),
+                HostSwitch(() async => await _controller.updateHostState()),
+                const Spacer(),
+                Row(
+                  children: const [
+                    Expanded(flex: 2, child: QRWidget()),
+                    Expanded(flex: 3, child: ConnectionDetailsCard()),
+                  ],
                 ),
+                HistoryCard(_controller.serverLogs),
+                const Spacer(),
               ],
-            ),
-          ),
-          const Spacer(),
-        ],
+            );
+          },
+        ),
       ),
     );
   }

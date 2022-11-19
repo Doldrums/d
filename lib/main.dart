@@ -2,7 +2,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 
-import 'client/client.dart';
+import 'client/client_page.dart';
 import 'home/home.dart';
 import 'host/host_page.dart';
 
