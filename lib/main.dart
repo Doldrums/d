@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 import 'client/client.dart';
 import 'home/home.dart';
-import 'host/host.dart';
+import 'host/host_page.dart';
 
 void main() {
   runApp(const MyApp());
