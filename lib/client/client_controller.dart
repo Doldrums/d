@@ -15,24 +15,32 @@ class ClientController extends ChangeNotifier {
   }
 
   getIpAddress() {
-    stream = NetworkAnalyzer.discover2('192.168.0.0', port);
-    stream?.listen((NetworkAddress networkAddress) {
-      if (networkAddress.exists) {
-        address = networkAddress;
-        client = ClientModel(
-            hostname: networkAddress.ip,
-            port: port,
-            onData: onData,
-            onError: onError);
-      }
-    });
+    try{
+      stream = NetworkAnalyzer.discover2('192.168.0', port);
+      stream?.listen((NetworkAddress networkAddress) {
+        if (networkAddress.exists) {
+          address = networkAddress;
+          client = ClientModel(
+              hostname: networkAddress.ip,
+              port: port,
+              onData: onData,
+              onError: onError);
+        }
+      });
+      notifyListeners();
+    } catch (e){
+      print('Some error occurred... $e');
+    }
+  }
+
+  sendMessage(String text) {
+    client!.write(text);
     notifyListeners();
   }
 
   onData(Uint8List data) {
     final message = String.fromCharCodes(data);
     logs.add(message);
-    notifyListeners();
   }
 
   onError(dynamic error) {
