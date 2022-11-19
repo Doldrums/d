@@ -13,7 +13,11 @@ class HostController extends ChangeNotifier {
   }
 
   Future<void> updateHostState() async {
-    if(!host!.running) await host!.start();
+    if(!host!.running) {
+      await host!.start();
+    } else {
+      await host!.stop();
+    }
     notifyListeners();
   }
 

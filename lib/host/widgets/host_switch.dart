@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../providers.dart';
+import '../../host_providers.dart';
 
 class HostSwitch extends HookConsumerWidget {
   final void Function()? onPressed;

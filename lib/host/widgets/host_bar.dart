@@ -1,10 +1,9 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../providers.dart';
+import '../../host_providers.dart';
 
 class HostAppBar extends HookConsumerWidget {
-
   const HostAppBar({Key? key}) : super(key: key);
 
   @override
@@ -21,28 +20,44 @@ class HostAppBar extends HookConsumerWidget {
             ),
           ),
           child: NeumorphicButton(
-              padding: const EdgeInsets.all(12.0),
-              onPressed: () {},
-              style: NeumorphicStyle(
-                depth: -10,
-                boxShape: NeumorphicBoxShape.roundRect(
-                  BorderRadius.circular(8),
-                ),
+            padding: const EdgeInsets.all(12.0),
+            onPressed: () {},
+            style: NeumorphicStyle(
+              depth: -10,
+              boxShape: NeumorphicBoxShape.roundRect(
+                BorderRadius.circular(8),
               ),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.connect_without_contact_sharp,
-                    color: Color(0xFFfc7b03),
+            ),
+            child: hostEnabled == null || !hostEnabled
+                ? Row(
+                    children: const [
+                      Icon(
+                        Icons.signal_wifi_connected_no_internet_4,
+                        color: Colors.grey,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 16.0),
+                        child: Text(
+                          'Disabled',
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: const [
+                      Icon(
+                        Icons.connect_without_contact_sharp,
+                        color: Color(0xFFfc7b03),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 16.0),
+                        child: Text(
+                          'Stable',
+                        ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16.0),
-                    child: Text(
-                      'Stable',
-                    ),
-                  ),
-                ],
-              )),
+          ),
         ),
         const Spacer(),
         Neumorphic(
