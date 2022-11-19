@@ -24,7 +24,7 @@ class ClientModel {
   Socket? socket;
 
   Future<void> connect() async {
-    try{
+    try {
       socket = await Socket.connect(hostname, port);
       socket?.listen(onData, onError: onError, onDone: () async {
         final info = await deviceInfo.deviceInfo;
@@ -32,7 +32,7 @@ class ClientModel {
         isConnected = false;
       });
       isConnected = true;
-    } catch (e){
+    } catch (e) {
       print('Some error occurred... $e');
     }
   }

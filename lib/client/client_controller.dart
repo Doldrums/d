@@ -15,7 +15,7 @@ class ClientController extends ChangeNotifier {
   }
 
   getIpAddress() {
-    try{
+    try {
       stream = NetworkAnalyzer.discover2('192.168.0', port);
       stream?.listen((NetworkAddress networkAddress) {
         if (networkAddress.exists) {
@@ -28,7 +28,7 @@ class ClientController extends ChangeNotifier {
         }
       });
       notifyListeners();
-    } catch (e){
+    } catch (e) {
       print('Some error occurred... $e');
     }
   }
