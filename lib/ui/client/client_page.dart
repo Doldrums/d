@@ -1,8 +1,11 @@
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:d/ui/client/widgets/connection_details_card.dart';
+import 'package:d/ui/client/widgets/content_card.dart';
+import 'package:d/ui/client/widgets/input_card.dart';
+import 'package:d/ui/client/widgets/scan_card.dart';
+import 'package:d/ui/client/widgets/vr_card.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../provider/client/client_controller.dart';
 import 'widgets/app_bar.dart';
 
 class ClientPage extends HookConsumerWidget {
@@ -10,17 +13,31 @@ class ClientPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ClientController();
     return NeumorphicBackground(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 48.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 60),
             const ClientAppBar(),
+            const SizedBox(height: 60),
+            Row(
+              children: [
+                const Expanded(flex: 3, child: ClientConnectionDetailsCard()),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: const [
+                      VRCard(),
+                      ScanCard(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
 
-            const Spacer(),
+            const ContentCard([]),
+            const SafeArea(child: InputCard(),),
           ],
         ),
       ),

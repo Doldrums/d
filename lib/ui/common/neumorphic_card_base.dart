@@ -14,9 +14,9 @@ class NeumorphicCardBase extends StatelessWidget {
         boxShape: NeumorphicBoxShape.roundRect(
             const BorderRadius.all(Radius.circular(20))),
       ),
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(16),
       child: Padding(
-        padding: const EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(24.0),
         child: content,
       ),
     );

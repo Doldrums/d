@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../common/neumorphic_card_base.dart';
 
-class VRCard extends ConsumerWidget {
-  const VRCard({Key? key}) : super(key: key);
+class ScanCard extends ConsumerWidget {
+  const ScanCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,14 +14,14 @@ class VRCard extends ConsumerWidget {
         height: 50,
         child: Column(
           children: [
-             Center(
-              child: Text('${Emoji.byName('evergreen tree')}',
+            Center(
+              child: Text('${Emoji.byName('camera')}',
                   style: const TextStyle(fontSize: 24)),
             ),
             const Spacer(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Center(child: Text('Explore', style: Theme.of(context).textTheme.bodyLarge!,)),
+              child: Center(child: Text('Scan', style: Theme.of(context).textTheme.bodyLarge!,)),
             ),
           ],
         ),
