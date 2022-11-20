@@ -1,3 +1,9 @@
+> ⚠ IMPORTANT INFO 
+>
+> Host supported only for Android. (there is no way to set the access point on iOS)
+> And also for client you will need IOS Development account;
+
+
 # Yandex Cup 2022 : Mobile Track : Quiz D
 
 <p align="center"><img src="https://github.com/Doldrums/d/blob/master/photo_2022-11-20%2022.44.21.jpeg" alt="General image"></p>
