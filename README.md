@@ -1,6 +1,6 @@
 # Yandex Cup 2022 : Mobile Track : Quiz B
 
-<p align="center"><img src="https://github.com/Doldrums/d/blob/master/shots/d.png?raw=true" alt="General image"></p>
+<p align="center"><img src="https://github.com/Doldrums/d/blob/master/photo_2022-11-20%2022.44.21.jpeg" alt="General image"></p>
 
 <p align="center">
    <a href="">
