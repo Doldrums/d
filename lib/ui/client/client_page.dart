@@ -7,7 +7,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../provider/client/client_providers.dart';
-import 'widgets/app_bar.dart';
+import 'widgets/client_bar.dart';
 
 class ClientPage extends HookConsumerWidget {
   const ClientPage({Key? key}) : super(key: key);
@@ -26,9 +26,9 @@ class ClientPage extends HookConsumerWidget {
             const SizedBox(height: 20),
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   flex: 1,
-                  child: VRCard(),
+                  child: VRCard((){}),
                 ),
                 Expanded(
                   flex: 1,
@@ -37,9 +37,9 @@ class ClientPage extends HookConsumerWidget {
                         .read(clientControllerProvider.notifier).updateClientState(),
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 1,
-                  child: SendCard(),
+                  child: SendCard((){}),
                 ),
               ],
             ),

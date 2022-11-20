@@ -10,29 +10,32 @@ class ScanCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return NeumorphicButton(
-      onPressed: onPressed,
-      style: NeumorphicStyle(
-        depth: 20,
-        surfaceIntensity: 1,
-        boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(8),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: NeumorphicButton(
+        onPressed: onPressed,
+        style: NeumorphicStyle(
+          depth: 20,
+          surfaceIntensity: 1,
+          boxShape: NeumorphicBoxShape.roundRect(
+            BorderRadius.circular(20),
+          ),
         ),
-      ),
-      child: SizedBox(
-        height: 50,
-        child: Column(
-          children: [
-            Center(
-              child: Text('${Emoji.byName('camera')}',
-                  style: const TextStyle(fontSize: 24)),
-            ),
-            const Spacer(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Center(child: Text('Connect', style: Theme.of(context).textTheme.bodyLarge!,)),
-            ),
-          ],
+        child: SizedBox(
+          height: 50,
+          child: Column(
+            children: [
+              Center(
+                child: Text('${Emoji.byName('camera')}',
+                    style: const TextStyle(fontSize: 24)),
+              ),
+              const Spacer(),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Center(child: Text('Connect', style: Theme.of(context).textTheme.bodyLarge!,)),
+              ),
+            ],
+          ),
         ),
       ),
     );

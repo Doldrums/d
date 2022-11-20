@@ -21,7 +21,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  'Unix domain address',
+                  'IP address',
                   style: Theme.of(context).textTheme.bodyLarge!,
                 ),
                 const Spacer(),
@@ -55,7 +55,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  'WiFi AP SSID',
+                  'WiFI Name',
                   style: Theme.of(context).textTheme.bodyLarge!,
                 ),
                 const Spacer(),
@@ -72,7 +72,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  "WiFi AP's password",
+                  "WiFi password",
                   style: Theme.of(context).textTheme.bodyLarge!,
                 ),
                 const Spacer(),
@@ -89,7 +89,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
             child: Row(
               children: [
                 Text(
-                  "Current Host State",
+                  "Connection status",
                   style: Theme.of(context).textTheme.bodyLarge!,
                 ),
                 const Spacer(),

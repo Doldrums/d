@@ -30,13 +30,13 @@ class ClientAppBar extends HookConsumerWidget {
                 ? Row(
                     children: const [
                       Icon(
-                        Icons.signal_wifi_connected_no_internet_4,
+                        Icons.not_interested,
                         color: Colors.grey,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 16.0),
                         child: Text(
-                          'Disabled',
+                          'Disconnected',
                         ),
                       ),
                     ],
@@ -44,7 +44,7 @@ class ClientAppBar extends HookConsumerWidget {
                 : Row(
                     children: const [
                       Icon(
-                        Icons.connect_without_contact_sharp,
+                        Icons.connect_without_contact,
                         color: Color(0xFFfc7b03),
                       ),
                       Padding(
