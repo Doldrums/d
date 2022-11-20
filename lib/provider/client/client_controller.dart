@@ -5,22 +5,31 @@ import 'package:flutter/foundation.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
 
 import '../models/connection_details.dart';
+import '../models/write_request.dart';
 
 class ClientController extends ChangeNotifier {
   Client client = Client();
-  List<String> logs = [];
+  List<WriteRequest> logs = [];
 
   Future<void> updateClientState(ConnectionDetails? details) async {
     if (details != null) {
       await client.connect(details);
+      getHistory();
     } else {
+      getHistory();
       client.disconnect();
     }
     notifyListeners();
   }
 
   sendMessage(String text) {
-    //client!.write(text);
+    client.write(text);
     notifyListeners();
   }
+
+  getHistory() async {
+    logs = await client.read();
+    notifyListeners();
+  }
+
 }

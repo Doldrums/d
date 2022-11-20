@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:d/ui/client/widgets/connection_details_card.dart';
 import 'package:d/ui/client/widgets/content_card.dart';
 import 'package:d/ui/client/widgets/scan_card.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../provider/client/client_providers.dart';
+import '../../provider/models/write_request.dart';
 import 'widgets/client_bar.dart';
 
 class ClientPage extends HookConsumerWidget {
@@ -14,7 +16,7 @@ class ClientPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<String> serverLogs = ref.watch(clientControllerProvider).logs;
+    List<WriteRequest> serverLogs = ref.watch(clientControllerProvider).logs;
 
     return NeumorphicBackground(
       child: Padding(
@@ -50,7 +52,20 @@ class ClientPage extends HookConsumerWidget {
                 ),
                 Expanded(
                   flex: 1,
-                  child: SendCard(() {}),
+                  child: SendCard(() async {
+                    final data = await showTextInputDialog(
+                      context: context,
+                      textFields: [
+                        DialogTextField(
+                          hintText: 'Write..',
+                          validator: (value) =>
+                          value!.isEmpty ? 'Input more than one character' : null,
+                        ),
+                      ],
+                    );
+                    await ref
+                        .read(clientControllerProvider.notifier).sendMessage(data!.first);
+                  }),
                 ),
               ],
             ),
