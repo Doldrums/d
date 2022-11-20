@@ -10,26 +10,27 @@ class ContentCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return NeumorphicCardBase(
-      content: SizedBox(
+    return SizedBox(
         height: 300,
         width: MediaQuery.of(context).size.width,
-        child: ListView(
-          children: [
-            Text(
-              'Host Server history',
-              style: Theme.of(context).textTheme.titleLarge!,
-            ),
-            const Divider(),
-            ...content
-                .map((e) => Text(
-              '> $e',
-              style: Theme.of(context).textTheme.bodyMedium!,
-            ))
-                .toList(),
-          ],
+        child: Center(
+          child: Column(
+            children: [
+              Text(
+                'Host Server history',
+                style: Theme.of(context).textTheme.headline5!,
+              ),
+              const Divider(),
+              ...content
+                  .map((e) => Text(
+                '> $e',
+                style: Theme.of(context).textTheme.bodyMedium!,
+              ))
+                  .toList(),
+            ],
+          ),
         ),
-      ),
+
     );
   }
 }

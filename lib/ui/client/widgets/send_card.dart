@@ -4,33 +4,24 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../common/neumorphic_card_base.dart';
 
-class ScanCard extends ConsumerWidget {
-  final void Function()? onPressed;
-  const ScanCard(this.onPressed, {Key? key}) : super(key: key);
+class SendCard extends ConsumerWidget {
+  const SendCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return NeumorphicButton(
-      onPressed: onPressed,
-      style: NeumorphicStyle(
-        depth: 20,
-        surfaceIntensity: 1,
-        boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(8),
-        ),
-      ),
-      child: SizedBox(
+    return NeumorphicCardBase(
+      content: SizedBox(
         height: 50,
         child: Column(
           children: [
             Center(
-              child: Text('${Emoji.byName('camera')}',
+              child: Text('${Emoji.byName('pen')}',
                   style: const TextStyle(fontSize: 24)),
             ),
             const Spacer(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Center(child: Text('Connect', style: Theme.of(context).textTheme.bodyLarge!,)),
+              child: Center(child: Text('Write', style: Theme.of(context).textTheme.bodyLarge!,)),
             ),
           ],
         ),
