@@ -1,16 +1,27 @@
-# d
+> ⚠ IMPORTANT INFO 
+>
+> Host supported only for Android. (there is no way to set the access point on iOS)
+> And also for client you will need IOS Development account;
 
-A new Flutter project.
 
-## Getting Started
+# Yandex Cup 2022 : Mobile Track : Quiz D
 
-This project is a starting point for a Flutter application.
+<p align="center"><img src="https://github.com/Doldrums/d/blob/master/photo_2022-11-20%2022.44.21.jpeg" alt="General image"></p>
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+   <a href="">
+    <img src="https://img.shields.io/badge/awesome-Flutter-1da1f2.svg?style=plastic" alt="Awesome Flutter" />
+  </a>
+  <a href="https://github.com/rrousselGit/riverpod">
+    <img src="https://img.shields.io/badge/maintained%20with-Riverpod-f700ff.svg?style=plastic" alt="Maintained with Riverpod" />
+  </a>
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Setup 
+```
+➜  folder ✗ git clone https://github.com/Doldrums/d.git
+➜  b git:(master) ✗ flutter pub get
+# in case there are conflicts in generated files
+➜  b git:(master) ✗ flutter pub run build_runner build --delete-conflicting-outputs
+```
