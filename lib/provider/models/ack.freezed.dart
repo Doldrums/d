@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'write_request.dart';
+part of 'ack.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,31 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WriteRequest _$WriteRequestFromJson(Map<String, dynamic> json) {
-  return _WriteRequest.fromJson(json);
+Ack _$AckFromJson(Map<String, dynamic> json) {
+  return _ConnectRequest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WriteRequest {
+mixin _$Ack {
   String get name => throw _privateConstructorUsedError;
   String get device => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WriteRequestCopyWith<WriteRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AckCopyWith<Ack> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WriteRequestCopyWith<$Res> {
-  factory $WriteRequestCopyWith(
-          WriteRequest value, $Res Function(WriteRequest) then) =
-      _$WriteRequestCopyWithImpl<$Res, WriteRequest>;
+abstract class $AckCopyWith<$Res> {
+  factory $AckCopyWith(Ack value, $Res Function(Ack) then) =
+      _$AckCopyWithImpl<$Res, Ack>;
   @useResult
-  $Res call({String name, String device, String message});
+  $Res call({String name, String device});
 }
 
 /// @nodoc
-class _$WriteRequestCopyWithImpl<$Res, $Val extends WriteRequest>
-    implements $WriteRequestCopyWith<$Res> {
-  _$WriteRequestCopyWithImpl(this._value, this._then);
+class _$AckCopyWithImpl<$Res, $Val extends Ack> implements $AckCopyWith<$Res> {
+  _$AckCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -54,7 +50,6 @@ class _$WriteRequestCopyWithImpl<$Res, $Val extends WriteRequest>
   $Res call({
     Object? name = null,
     Object? device = null,
-    Object? message = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -65,31 +60,26 @@ class _$WriteRequestCopyWithImpl<$Res, $Val extends WriteRequest>
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_WriteRequestCopyWith<$Res>
-    implements $WriteRequestCopyWith<$Res> {
-  factory _$$_WriteRequestCopyWith(
-          _$_WriteRequest value, $Res Function(_$_WriteRequest) then) =
-      __$$_WriteRequestCopyWithImpl<$Res>;
+abstract class _$$_ConnectRequestCopyWith<$Res> implements $AckCopyWith<$Res> {
+  factory _$$_ConnectRequestCopyWith(
+          _$_ConnectRequest value, $Res Function(_$_ConnectRequest) then) =
+      __$$_ConnectRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String device, String message});
+  $Res call({String name, String device});
 }
 
 /// @nodoc
-class __$$_WriteRequestCopyWithImpl<$Res>
-    extends _$WriteRequestCopyWithImpl<$Res, _$_WriteRequest>
-    implements _$$_WriteRequestCopyWith<$Res> {
-  __$$_WriteRequestCopyWithImpl(
-      _$_WriteRequest _value, $Res Function(_$_WriteRequest) _then)
+class __$$_ConnectRequestCopyWithImpl<$Res>
+    extends _$AckCopyWithImpl<$Res, _$_ConnectRequest>
+    implements _$$_ConnectRequestCopyWith<$Res> {
+  __$$_ConnectRequestCopyWithImpl(
+      _$_ConnectRequest _value, $Res Function(_$_ConnectRequest) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,9 +87,8 @@ class __$$_WriteRequestCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? device = null,
-    Object? message = null,
   }) {
-    return _then(_$_WriteRequest(
+    return _then(_$_ConnectRequest(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -108,80 +97,69 @@ class __$$_WriteRequestCopyWithImpl<$Res>
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_WriteRequest implements _WriteRequest {
-  const _$_WriteRequest(
-      {required this.name, required this.device, required this.message});
+class _$_ConnectRequest implements _ConnectRequest {
+  const _$_ConnectRequest({required this.name, required this.device});
 
-  factory _$_WriteRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_WriteRequestFromJson(json);
+  factory _$_ConnectRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_ConnectRequestFromJson(json);
 
   @override
   final String name;
   @override
   final String device;
-  @override
-  final String message;
 
   @override
   String toString() {
-    return 'WriteRequest(name: $name, device: $device, message: $message)';
+    return 'Ack(name: $name, device: $device)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WriteRequest &&
+            other is _$_ConnectRequest &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.device, device) || other.device == device) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.device, device) || other.device == device));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, device, message);
+  int get hashCode => Object.hash(runtimeType, name, device);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WriteRequestCopyWith<_$_WriteRequest> get copyWith =>
-      __$$_WriteRequestCopyWithImpl<_$_WriteRequest>(this, _$identity);
+  _$$_ConnectRequestCopyWith<_$_ConnectRequest> get copyWith =>
+      __$$_ConnectRequestCopyWithImpl<_$_ConnectRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WriteRequestToJson(
+    return _$$_ConnectRequestToJson(
       this,
     );
   }
 }
 
-abstract class _WriteRequest implements WriteRequest {
-  const factory _WriteRequest(
+abstract class _ConnectRequest implements Ack {
+  const factory _ConnectRequest(
       {required final String name,
-      required final String device,
-      required final String message}) = _$_WriteRequest;
+      required final String device}) = _$_ConnectRequest;
 
-  factory _WriteRequest.fromJson(Map<String, dynamic> json) =
-      _$_WriteRequest.fromJson;
+  factory _ConnectRequest.fromJson(Map<String, dynamic> json) =
+      _$_ConnectRequest.fromJson;
 
   @override
   String get name;
   @override
   String get device;
   @override
-  String get message;
-  @override
   @JsonKey(ignore: true)
-  _$$_WriteRequestCopyWith<_$_WriteRequest> get copyWith =>
+  _$$_ConnectRequestCopyWith<_$_ConnectRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }

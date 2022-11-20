@@ -1,10 +1,10 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../provider/models/write_request.dart';
+import '../../../provider/models/message.dart';
 
 class ContentCard extends HookConsumerWidget {
-  final List<WriteRequest> content;
+  final List<Message> content;
 
   const ContentCard(this.content, {Key? key}) : super(key: key);
 
@@ -22,7 +22,7 @@ class ContentCard extends HookConsumerWidget {
             ),
             const Divider(),
             ...content
-                .map((WriteRequest e) => Text(
+                .map((Message e) => Text(
                       '> Text Message from:${e.name}, ${e.device} -> ${e.message}',
                       style: Theme.of(context).textTheme.bodyMedium!,
                     ))

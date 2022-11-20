@@ -20,7 +20,7 @@ HistoryResponse _$HistoryResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HistoryResponse {
-  List<WriteRequest> get result => throw _privateConstructorUsedError;
+  List<Message> get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $HistoryResponseCopyWith<$Res> {
           HistoryResponse value, $Res Function(HistoryResponse) then) =
       _$HistoryResponseCopyWithImpl<$Res, HistoryResponse>;
   @useResult
-  $Res call({List<WriteRequest> result});
+  $Res call({List<Message> result});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$HistoryResponseCopyWithImpl<$Res, $Val extends HistoryResponse>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<WriteRequest>,
+              as List<Message>,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$_HistoryResponseCopyWith<$Res>
       __$$_HistoryResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<WriteRequest> result});
+  $Res call({List<Message> result});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$_HistoryResponseCopyWithImpl<$Res>
       result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<WriteRequest>,
+              as List<Message>,
     ));
   }
 }
@@ -97,15 +97,15 @@ class __$$_HistoryResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HistoryResponse implements _HistoryResponse {
-  const _$_HistoryResponse({required final List<WriteRequest> result})
+  const _$_HistoryResponse({required final List<Message> result})
       : _result = result;
 
   factory _$_HistoryResponse.fromJson(Map<String, dynamic> json) =>
       _$$_HistoryResponseFromJson(json);
 
-  final List<WriteRequest> _result;
+  final List<Message> _result;
   @override
-  List<WriteRequest> get result {
+  List<Message> get result {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_result);
   }
@@ -143,14 +143,14 @@ class _$_HistoryResponse implements _HistoryResponse {
 }
 
 abstract class _HistoryResponse implements HistoryResponse {
-  const factory _HistoryResponse({required final List<WriteRequest> result}) =
+  const factory _HistoryResponse({required final List<Message> result}) =
       _$_HistoryResponse;
 
   factory _HistoryResponse.fromJson(Map<String, dynamic> json) =
       _$_HistoryResponse.fromJson;
 
   @override
-  List<WriteRequest> get result;
+  List<Message> get result;
   @override
   @JsonKey(ignore: true)
   _$$_HistoryResponseCopyWith<_$_HistoryResponse> get copyWith =>

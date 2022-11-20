@@ -8,7 +8,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../provider/client/client_providers.dart';
-import '../../provider/models/write_request.dart';
+import '../../provider/models/message.dart';
 import 'widgets/client_bar.dart';
 
 class ClientPage extends HookConsumerWidget {
@@ -16,7 +16,7 @@ class ClientPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<WriteRequest> serverLogs = ref.watch(clientControllerProvider).logs;
+    List<Message> serverLogs = ref.watch(clientControllerProvider).logs;
 
     return NeumorphicBackground(
       child: Padding(

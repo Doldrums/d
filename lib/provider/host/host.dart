@@ -7,9 +7,9 @@ import 'package:flutter_device_details/device_details.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wifi_iot/wifi_iot.dart';
 
-import '../models/connect_request.dart';
+import '../models/ack.dart';
 import '../models/api_response.dart';
-import '../models/write_request.dart';
+import '../models/message.dart';
 
 typedef Uint8ListCallBack = Function(Uint8List data);
 typedef DynamicCallBack = Function(dynamic data);
@@ -65,7 +65,7 @@ class Host {
 
   void onRequest(HttpRequest request) async {
     if (request.uri.path == "/connect" && request.method == 'POST') {
-      ConnectRequest connectRequest = ConnectRequest.fromJson(
+      Ack connectRequest = Ack.fromJson(
           json.decode(await utf8.decoder.bind(request).join()));
 
       request.response.headers.set("Content-Type", "application/json");
@@ -76,7 +76,7 @@ class Host {
           .name} connected from ${connectRequest.device}";
       onData!(Uint8List.fromList(message.codeUnits));
     } else if (request.uri.path == "/disconnect" && request.method == 'POST') {
-      ConnectRequest connectRequest = ConnectRequest.fromJson(
+      Ack connectRequest = Ack.fromJson(
           json.decode(await utf8.decoder.bind(request).join()));
 
       request.response.headers.set("Content-Type", "application/json");
@@ -86,7 +86,7 @@ class Host {
       final message = "${connectRequest.name} disconnected";
       onData!(Uint8List.fromList(message.codeUnits));
     } else if (request.uri.path == "/write" && request.method == 'POST') {
-      WriteRequest writeRequest = WriteRequest.fromJson(
+      Message writeRequest = Message.fromJson(
           json.decode(await utf8.decoder.bind(request).join()));
 
       request.response.headers.set("Content-Type", "application/json");

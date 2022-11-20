@@ -9,7 +9,7 @@ part of 'history_response.dart';
 _$_HistoryResponse _$$_HistoryResponseFromJson(Map<String, dynamic> json) =>
     _$_HistoryResponse(
       result: (json['result'] as List<dynamic>)
-          .map((e) => WriteRequest.fromJson(e as Map<String, dynamic>))
+          .map((e) => Message.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

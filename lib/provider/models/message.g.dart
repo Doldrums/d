@@ -1,19 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'write_request.dart';
+part of 'message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WriteRequest _$$_WriteRequestFromJson(Map<String, dynamic> json) =>
-    _$_WriteRequest(
+_$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
       name: json['name'] as String,
       device: json['device'] as String,
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$$_WriteRequestToJson(_$_WriteRequest instance) =>
+Map<String, dynamic> _$$_MessageToJson(_$_Message instance) =>
     <String, dynamic>{
       'name': instance.name,
       'device': instance.device,

@@ -7,7 +7,7 @@ import 'package:wifi_iot/wifi_iot.dart';
 
 import '../models/connection_details.dart';
 import '../models/history_response.dart';
-import '../models/write_request.dart';
+import '../models/message.dart';
 
 typedef Uint8ListCallBack = Function(Uint8List data);
 typedef DynamicCallBack = Function(dynamic data);
@@ -81,7 +81,7 @@ class Client {
     await WiFiForIoTPlugin.disconnect();
   }
 
-  Future<List<WriteRequest>> read() async {
+  Future<List<Message>> read() async {
     if (await WiFiForIoTPlugin.isConnected()) {
       try {
         final response = await dio.get('http://${details!.ip}:8080/read');
