@@ -24,6 +24,7 @@ class ClientController extends ChangeNotifier {
 
   sendMessage(String text) {
     client.write(text);
+    getHistory();
     notifyListeners();
   }
 

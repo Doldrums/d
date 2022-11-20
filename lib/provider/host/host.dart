@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_device_details/device_details.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wifi_iot/wifi_iot.dart';
 
 import '../models/ack.dart';
 import '../models/api_response.dart';
+import '../models/history_response.dart';
 import '../models/message.dart';
 
 typedef Uint8ListCallBack = Function(Uint8List data);
@@ -22,13 +24,13 @@ class Host {
 
   HttpServer? host;
   bool running = false;
-  List<Socket> sockets = [];
   String? qrData;
   InternetAddress address = InternetAddress.anyIPv4;
   int port = 8080;
   String? ssid;
   String? password;
   String? ip;
+  List<Message> history = [];
 
   Future<void> start() async {
     if (await Permission.locationWhenInUse.request().isGranted &&
@@ -44,7 +46,9 @@ class Host {
         host!.listen(onRequest);
         const message = "Server is listening on port 8080.";
         onData!(Uint8List.fromList(message.codeUnits));
-      }, onError: onError);
+      },
+          //ignore: deprecated_member_use
+          onError: onError);
     }
   }
 
@@ -65,19 +69,19 @@ class Host {
 
   void onRequest(HttpRequest request) async {
     if (request.uri.path == "/connect" && request.method == 'POST') {
-      Ack connectRequest = Ack.fromJson(
-          json.decode(await utf8.decoder.bind(request).join()));
+      Ack connectRequest =
+          Ack.fromJson(json.decode(await utf8.decoder.bind(request).join()));
 
       request.response.headers.set("Content-Type", "application/json");
       request.response.write(json.encode(ApiResponse(status: 'ok').toJson()));
       request.response.close();
 
-      final message = "${connectRequest
-          .name} connected from ${connectRequest.device}";
+      final message =
+          "${connectRequest.name} connected from ${connectRequest.device}";
       onData!(Uint8List.fromList(message.codeUnits));
     } else if (request.uri.path == "/disconnect" && request.method == 'POST') {
-      Ack connectRequest = Ack.fromJson(
-          json.decode(await utf8.decoder.bind(request).join()));
+      Ack connectRequest =
+          Ack.fromJson(json.decode(await utf8.decoder.bind(request).join()));
 
       request.response.headers.set("Content-Type", "application/json");
       request.response.write(json.encode(ApiResponse(status: 'ok').toJson()));
@@ -93,11 +97,16 @@ class Host {
       request.response.write(json.encode(ApiResponse(status: 'ok').toJson()));
       request.response.close();
 
-      // TODO: save message to database
+      history.add(writeRequest);
 
-      final message = "${writeRequest.name} posted ${writeRequest.message} from ${writeRequest.device}";
+      final message =
+          "${writeRequest.name} posted ${writeRequest.message} from ${writeRequest.device}";
       onData!(Uint8List.fromList(message.codeUnits));
+    } else if (request.uri.path == "/read" && request.method == 'GET') {
+      request.response.headers.set("Content-Type", "application/json");
+      request.response
+          .write(json.encode(HistoryResponse(result: history).toJson()));
+      request.response.close();
     }
-    print(request);
   }
 }

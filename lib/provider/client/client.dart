@@ -78,7 +78,6 @@ class Client {
         print('Some error occurred... $e');
       }
     }
-    await WiFiForIoTPlugin.disconnect();
   }
 
   Future<List<Message>> read() async {
