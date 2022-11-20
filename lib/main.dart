@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           '/client': (context) => const ClientPage(),
           '/host': (context) => const HostPage(),
           '/qrscanner': (context) => const QRScanner(),
-          '/ar': (context) => ARViewer(),
+          '/arviewer': (context) => ARViewer(),
         },
         initialRoute: '/',
       ),

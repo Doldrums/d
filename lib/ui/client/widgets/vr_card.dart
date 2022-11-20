@@ -30,7 +30,7 @@ class VRCard extends ConsumerWidget {
               width: MediaQuery.of(context).size.width,
               child: Center(
                   child: Text(
-                'Explore',
+                'AR Viewer',
                 style: Theme.of(context).textTheme.bodyLarge!,
               )),
             ),

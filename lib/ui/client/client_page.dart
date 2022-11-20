@@ -23,8 +23,7 @@ class ClientPage extends HookConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: RefreshIndicator(
           onRefresh: () async {
-            await ref
-                .read(clientControllerProvider.notifier).getHistory();
+            await ref.read(clientControllerProvider.notifier).getHistory();
           },
           child: ListView(
             children: [
@@ -36,7 +35,14 @@ class ClientPage extends HookConsumerWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: VRCard(() {}),
+                    child: VRCard(
+                      () async {
+                        await Navigator.pushNamed(
+                          context,
+                          '/arviewer',
+                        );
+                      },
+                    ),
                   ),
                   Expanded(
                     flex: 1,
@@ -48,7 +54,8 @@ class ClientPage extends HookConsumerWidget {
                         );
                         await ref
                             .read(clientControllerProvider.notifier)
-                            .updateClientState(ref.read(connectionDetailsProvider));
+                            .updateClientState(
+                                ref.read(connectionDetailsProvider));
                       },
                     ),
                   ),
@@ -60,13 +67,15 @@ class ClientPage extends HookConsumerWidget {
                         textFields: [
                           DialogTextField(
                             hintText: 'Write..',
-                            validator: (value) =>
-                            value!.isEmpty ? 'Input more than one character' : null,
+                            validator: (value) => value!.isEmpty
+                                ? 'Input more than one character'
+                                : null,
                           ),
                         ],
                       );
                       await ref
-                          .read(clientControllerProvider.notifier).sendMessage(data!.first);
+                          .read(clientControllerProvider.notifier)
+                          .sendMessage(data!.first);
                     }),
                   ),
                 ],
