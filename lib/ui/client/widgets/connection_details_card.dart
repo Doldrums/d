@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../provider/host/host_providers.dart';
 import '../../common/neumorphic_card_base.dart';
 
-class ConnectionDetailsCard extends ConsumerWidget {
-  const ConnectionDetailsCard({Key? key}) : super(key: key);
+class ClientConnectionDetailsCard extends ConsumerWidget {
+  const ClientConnectionDetailsCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final host = ref.watch(hostProvider);
     return NeumorphicCardBase(
       content: SizedBox(
         height: 200,
@@ -31,7 +28,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.address.address ?? 'none',
+                    'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),
@@ -48,7 +45,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.port.toString() ?? 'none',
+                    'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),
@@ -65,7 +62,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.ssid ?? 'none',
+                    'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),
@@ -82,7 +79,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.password ?? 'none',
+                    'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),
@@ -99,11 +96,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.running == null
-                        ? 'none'
-                        : host!.running
-                            ? 'Running..'
-                            : 'Sleeping..',
+                    'Sleeping..',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),

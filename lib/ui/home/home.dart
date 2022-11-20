@@ -1,4 +1,4 @@
-import 'package:d/home/widgets/behavior_btn.dart';
+import 'package:d/ui/home/widgets/behavior_btn.dart';
 import 'package:emojis/emoji.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -61,15 +61,11 @@ class HomePage extends HookConsumerWidget {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'Operation'.toUpperCase(),
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: const Color(0xFF303E57),
-                        ),
+                    style: Theme.of(context).textTheme.titleLarge!,
                     children: <TextSpan>[
                       TextSpan(
                         text: '\nSecret Pine',
-                        style: Theme.of(context).textTheme.caption?.copyWith(
-                              color: const Color(0xFF303E57),
-                            ),
+                        style: Theme.of(context).textTheme.bodyMedium!,
                       ),
                     ],
                   ),

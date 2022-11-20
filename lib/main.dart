@@ -1,9 +1,9 @@
+import 'package:d/ui/home/home.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 
 import 'ui/client/client_page.dart';
-import 'home/home.dart';
 import 'ui/host/host_page.dart';
 
 void main() {

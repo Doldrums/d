@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../provider/host/host_providers.dart';
-import 'neumorphic_card_base.dart';
+import '../../common/neumorphic_card_base.dart';
 
 class QRCard extends ConsumerWidget {
   const QRCard({Key? key}) : super(key: key);

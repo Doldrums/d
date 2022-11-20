@@ -1,7 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'neumorphic_card_base.dart';
+import '../../common/neumorphic_card_base.dart';
 
 class LogsCard extends HookConsumerWidget {
   final List<String> history;
