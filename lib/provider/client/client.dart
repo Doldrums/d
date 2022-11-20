@@ -25,7 +25,7 @@ class Client {
   Socket? socket;
 
   Future<void> connect() async {
-    if (await WiFiForIoTPlugin.isConnected()){
+    if (await WiFiForIoTPlugin.isConnected()) {
       try {
         hostname = (await WiFiForIoTPlugin.getIP())!;
         socket = await Socket.connect(hostname, port);
@@ -38,7 +38,6 @@ class Client {
       } catch (e) {
         print('Some error occurred... $e');
       }
-
     }
   }
 
@@ -47,7 +46,7 @@ class Client {
   void disconnect() {
     const ack = 'disconnected';
     write(ack);
-    if (socket!=null) {
+    if (socket != null) {
       socket?.destroy();
     }
   }

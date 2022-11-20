@@ -11,26 +11,25 @@ class ContentCard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
-        height: 300,
-        width: MediaQuery.of(context).size.width,
-        child: Center(
-          child: Column(
-            children: [
-              Text(
-                'Host Server history',
-                style: Theme.of(context).textTheme.headline5!,
-              ),
-              const Divider(),
-              ...content
-                  .map((e) => Text(
-                '> $e',
-                style: Theme.of(context).textTheme.bodyMedium!,
-              ))
-                  .toList(),
-            ],
-          ),
+      height: 300,
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              'Host Server history',
+              style: Theme.of(context).textTheme.headline5!,
+            ),
+            const Divider(),
+            ...content
+                .map((e) => Text(
+                      '> $e',
+                      style: Theme.of(context).textTheme.bodyMedium!,
+                    ))
+                .toList(),
+          ],
         ),
-
+      ),
     );
   }
 }

@@ -28,7 +28,11 @@ class SendCard extends ConsumerWidget {
             const Spacer(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Center(child: Text('Write', style: Theme.of(context).textTheme.bodyLarge!,)),
+              child: Center(
+                  child: Text(
+                'Write',
+                style: Theme.of(context).textTheme.bodyLarge!,
+              )),
             ),
           ],
         ),

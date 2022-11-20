@@ -28,18 +28,19 @@ class ClientPage extends HookConsumerWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: VRCard((){}),
+                  child: VRCard(() {}),
                 ),
                 Expanded(
                   flex: 1,
                   child: ScanCard(
-                        () async => await ref
-                        .read(clientControllerProvider.notifier).updateClientState(),
+                    () async => await ref
+                        .read(clientControllerProvider.notifier)
+                        .updateClientState(),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: SendCard((){}),
+                  child: SendCard(() {}),
                 ),
               ],
             ),

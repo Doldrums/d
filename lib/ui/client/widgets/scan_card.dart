@@ -32,7 +32,11 @@ class ScanCard extends ConsumerWidget {
               const Spacer(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Center(child: Text('Connect', style: Theme.of(context).textTheme.bodyLarge!,)),
+                child: Center(
+                    child: Text(
+                  'Connect',
+                  style: Theme.of(context).textTheme.bodyLarge!,
+                )),
               ),
             ],
           ),

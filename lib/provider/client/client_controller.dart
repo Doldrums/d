@@ -28,11 +28,8 @@ class ClientController extends ChangeNotifier {
       //         onError: onError);
       //   }
       // });
-      client = Client(
-          hostname: null,
-          port: port,
-          onData: onData,
-          onError: onError);
+      client =
+          Client(hostname: null, port: port, onData: onData, onError: onError);
       notifyListeners();
     } catch (e) {
       print('Some error occurred... $e');
@@ -43,7 +40,7 @@ class ClientController extends ChangeNotifier {
     if (!client!.isConnected) {
       await client!.connect();
     } else {
-       client!.disconnect();
+      client!.disconnect();
     }
     notifyListeners();
   }

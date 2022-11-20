@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'client.dart';
 import 'client_controller.dart';
 
-final clientControllerProvider = ChangeNotifierProvider<ClientController>((ref) {
+final clientControllerProvider =
+    ChangeNotifierProvider<ClientController>((ref) {
   final client = ClientController();
   client.init();
   return client;
