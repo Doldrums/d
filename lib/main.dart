@@ -5,15 +5,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 
 import 'ui/client/client_page.dart';
+import 'ui/client/widgets/ar_viewer.dart';
 import 'ui/host/host_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-var logger = Logger(
+final logger = Logger(
   printer: PrettyPrinter(),
 );
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
           '/client': (context) => const ClientPage(),
           '/host': (context) => const HostPage(),
           '/qrscanner': (context) => const QRScanner(),
+          '/ar': (context) => ARViewer(),
         },
         initialRoute: '/',
       ),

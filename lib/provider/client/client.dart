@@ -1,4 +1,5 @@
 import 'dart:io' show Platform;
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -12,6 +13,12 @@ import '../models/message.dart';
 typedef Uint8ListCallBack = Function(Uint8List data);
 typedef DynamicCallBack = Function(dynamic data);
 
+const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+Random _rnd = Random();
+
+String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+    length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
 class Client {
   var dio = Dio();
 
@@ -22,7 +29,7 @@ class Client {
   bool isConnected = false;
   ConnectionDetails? details;
   String? device;
-  String? name;
+  String name = getRandomString(10);
 
   Future<void> connect(ConnectionDetails details) async {
     this.details = details;
@@ -34,8 +41,6 @@ class Client {
     } else {
       this.device = "Unknown";
     }
-
-    this.name = "Arina";
 
     await WiFiForIoTPlugin.connect(details.wifiName,
         password: details.wifiPassword,

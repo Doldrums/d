@@ -1,12 +1,15 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../provider/client/client_providers.dart';
+
 class ClientAppBar extends HookConsumerWidget {
   const ClientAppBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const bool? isConnected = false;
+    final client = ref.watch(clientProvider);
+    bool? isConnected = client?.isConnected ?? false;
     return Row(
       children: [
         Neumorphic(
@@ -26,7 +29,7 @@ class ClientAppBar extends HookConsumerWidget {
                 BorderRadius.circular(8),
               ),
             ),
-            child: isConnected == null || !isConnected
+            child: !isConnected
                 ? Row(
                     children: const [
                       Icon(

@@ -21,57 +21,60 @@ class ClientPage extends HookConsumerWidget {
     return NeumorphicBackground(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: ListView(
-          children: [
-            const ClientAppBar(),
-            const SizedBox(height: 20),
-            ClientConnectionDetailsCard(),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: VRCard(() {}),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: ScanCard(
-                    () async {
-                      await Navigator.pushNamed(
-                        context,
-                        '/qrscanner',
-                      );
-
-                      // print('exited ${ref.read(connectionDetailsProvider)}');
-
-                      await ref
-                          .read(clientControllerProvider.notifier)
-                          .updateClientState(ref.read(connectionDetailsProvider));
-                    },
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await ref
+                .read(clientControllerProvider.notifier).getHistory();
+          },
+          child: ListView(
+            children: [
+              const ClientAppBar(),
+              const SizedBox(height: 20),
+              ClientConnectionDetailsCard(),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: VRCard(() {}),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SendCard(() async {
-                    final data = await showTextInputDialog(
-                      context: context,
-                      textFields: [
-                        DialogTextField(
-                          hintText: 'Write..',
-                          validator: (value) =>
-                          value!.isEmpty ? 'Input more than one character' : null,
-                        ),
-                      ],
-                    );
-                    await ref
-                        .read(clientControllerProvider.notifier).sendMessage(data!.first);
-                  }),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            ContentCard(serverLogs),
-          ],
+                  Expanded(
+                    flex: 1,
+                    child: ScanCard(
+                      () async {
+                        await Navigator.pushNamed(
+                          context,
+                          '/qrscanner',
+                        );
+                        await ref
+                            .read(clientControllerProvider.notifier)
+                            .updateClientState(ref.read(connectionDetailsProvider));
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: SendCard(() async {
+                      final data = await showTextInputDialog(
+                        context: context,
+                        textFields: [
+                          DialogTextField(
+                            hintText: 'Write..',
+                            validator: (value) =>
+                            value!.isEmpty ? 'Input more than one character' : null,
+                          ),
+                        ],
+                      );
+                      await ref
+                          .read(clientControllerProvider.notifier).sendMessage(data!.first);
+                    }),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              ContentCard(serverLogs),
+            ],
+          ),
         ),
       ),
     );
