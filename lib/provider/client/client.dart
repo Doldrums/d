@@ -1,39 +1,50 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:wifi_iot/wifi_iot.dart';
+import 'dart:io' show Platform;
+
+import '../models/connection_details.dart';
 
 typedef Uint8ListCallBack = Function(Uint8List data);
 typedef DynamicCallBack = Function(dynamic data);
 
-DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-
 class Client {
-  String? hostname;
-  int port;
-  Uint8ListCallBack onData;
-  DynamicCallBack onError;
+  var dio = Dio();
 
-  Client({
-    required this.hostname,
-    required this.port,
-    required this.onData,
-    required this.onError,
-  });
+  Client();
+
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+
   bool isConnected = false;
-  Socket? socket;
+  ConnectionDetails? details;
+  String? device;
+  String? name;
 
-  Future<void> connect() async {
+  Future<void> connect(ConnectionDetails details) async {
+    this.details = details;
+
+    if (Platform.isAndroid) {
+      this.device = (await deviceInfo.androidInfo).model;
+    } else if (Platform.isIOS) {
+      this.device = (await deviceInfo.iosInfo).model;
+    } else {
+      this.device = "Unknown";
+    }
+
+    this.name = "Arina";
+
+    await WiFiForIoTPlugin.connect(details.wifiName,
+        password: details.wifiPassword,
+        security: NetworkSecurity.WPA,
+        joinOnce: true,
+        withInternet: false);
     if (await WiFiForIoTPlugin.isConnected()) {
+      await WiFiForIoTPlugin.forceWifiUsage(true);
+
       try {
-        hostname = (await WiFiForIoTPlugin.getIP())!;
-        socket = await Socket.connect(hostname, port);
-        socket?.listen(onData, onError: onError, onDone: () async {
-          final info = await deviceInfo.deviceInfo;
-          disconnect();
-          isConnected = false;
-        });
+        await dio.post('http://${details.ip}:8080/connect', data: {'name': name, 'device': device});
         isConnected = true;
       } catch (e) {
         print('Some error occurred... $e');
@@ -41,13 +52,16 @@ class Client {
     }
   }
 
-  void write(String message) => socket?.write(message);
-
-  void disconnect() {
-    const ack = 'disconnected';
-    write(ack);
-    if (socket != null) {
-      socket?.destroy();
+  Future<void> disconnect() async {
+    if (await WiFiForIoTPlugin.isConnected()) {
+      try {
+        await dio
+            .post('http://${details!.ip}:8080/disconnect', data: {'name': name, 'device': device});
+        isConnected = false;
+      } catch (e) {
+        print('Some error occurred... $e');
+      }
     }
+    await WiFiForIoTPlugin.disconnect();
   }
 }

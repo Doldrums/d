@@ -1,3 +1,4 @@
+import 'package:d/ui/client/widgets/qr_scanner.dart';
 import 'package:d/ui/home/home.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const HomePage(),
           '/client': (context) => const ClientPage(),
           '/host': (context) => const HostPage(),
+          '/qrscanner': (context) => const QRScanner(),
         },
         initialRoute: '/',
       ),

@@ -31,7 +31,7 @@ class ConnectionDetailsCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    host?.address.address ?? 'none',
+                    host?.ip ?? 'none',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.bodyMedium!,
                   ),

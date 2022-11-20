@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../../provider/client/client_providers.dart';
 import '../../common/neumorphic_card_base.dart';
 
 class ClientConnectionDetailsCard extends ConsumerWidget {
@@ -7,6 +9,9 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final details = ref.watch(connectionDetailsProvider);
+    final client = ref.watch(clientProvider);
+
     return NeumorphicCardBase(
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +31,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'none',
+                  details?.ip ?? 'none',
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
@@ -43,7 +48,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'none',
+                  client?.isConnected == true ? '8080' : 'none',
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
@@ -60,7 +65,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'none',
+                  details?.wifiName ?? 'none',
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
@@ -77,7 +82,7 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'none',
+                  details?.wifiPassword ?? 'none',
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
@@ -94,7 +99,11 @@ class ClientConnectionDetailsCard extends ConsumerWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'Sleeping..',
+                  client?.isConnected == null
+                      ? 'none'
+                      : client!.isConnected
+                          ? 'Connected..'
+                          : 'Sleeping..',
                   textAlign: TextAlign.end,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),

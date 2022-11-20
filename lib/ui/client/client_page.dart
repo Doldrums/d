@@ -15,6 +15,7 @@ class ClientPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<String> serverLogs = ref.watch(clientControllerProvider).logs;
+
     return NeumorphicBackground(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -22,7 +23,7 @@ class ClientPage extends HookConsumerWidget {
           children: [
             const ClientAppBar(),
             const SizedBox(height: 20),
-            const Expanded(flex: 3, child: ClientConnectionDetailsCard()),
+            ClientConnectionDetailsCard(),
             const SizedBox(height: 20),
             Row(
               children: [
@@ -33,9 +34,18 @@ class ClientPage extends HookConsumerWidget {
                 Expanded(
                   flex: 1,
                   child: ScanCard(
-                    () async => await ref
-                        .read(clientControllerProvider.notifier)
-                        .updateClientState(),
+                    () async {
+                      await Navigator.pushNamed(
+                        context,
+                        '/qrscanner',
+                      );
+
+                      // print('exited ${ref.read(connectionDetailsProvider)}');
+
+                      await ref
+                          .read(clientControllerProvider.notifier)
+                          .updateClientState(ref.read(connectionDetailsProvider));
+                    },
                   ),
                 ),
                 Expanded(

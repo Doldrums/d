@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../models/connection_details.dart';
 import 'host.dart';
 import 'host_controller.dart';
 
@@ -16,7 +19,13 @@ final hostProvider = StateProvider<Host?>((ref) {
 
 final qrDataProvider = StateProvider<String?>((ref) {
   final host = ref.watch(hostControllerProvider).host;
-  return host?.qrData;
+  if (host == null || host.ip == null) return null;
+  final model = ConnectionDetails(
+    wifiName: host.ssid ?? '',
+    ip: host.ip ?? '',
+    wifiPassword: host.password ?? '',
+  );
+  return json.encode(model.toJson());
 });
 
 final hostStateProvider = StateProvider<bool?>((ref) {
